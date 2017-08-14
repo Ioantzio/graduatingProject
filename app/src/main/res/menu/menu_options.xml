@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/options"
+        android:icon="@drawable/ic_options"
+        android:menuCategory="container"
+        android:onClick="optionsOnClickEvent"
+        android:title="@string/menu_options"
+        android:titleCondensed="@string/menu_options_short"/>
+    <group android:id="@+id/sound">
+        <item
+            android:id="@+id/music"
+            android:checkable="true"
+            android:icon="@drawable/ic_music"
+            android:onClick="musicOnClickEvent"
+            android:title="@string/menu_music"
+            android:titleCondensed="@string/menu_music_short"/>
+        <item
+            android:id="@+id/sounds"
+            android:checkable="true"
+            android:icon="@drawable/ic_sounds"
+            android:onClick="soundsOnClickEvent"
+            android:title="@string/menu_sounds"
+            android:titleCondensed="@string/menu_sounds_short"/>
+    </group>
+    <item
+        android:id="@+id/exit"
+        android:icon="@drawable/ic_exit"
+        android:onClick="exitOnClickEvent"
+        android:title="@string/menu_exit"
+        android:titleCondensed="@string/menu_exit_short"
+        app:showAsAction="ifRoom|withText"/>
+</menu>

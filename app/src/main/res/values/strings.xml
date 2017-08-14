@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">Portals</string>
+
+    <!-- Prompting -->
+    <string name="prompt_username">Username</string>
+    <string name="prompt_name">Name</string>
+    <string name="prompt_surname">Surname</string>
+    <string name="prompt_password">Password</string>
+    <string name="prompt_answer">Answer</string>
+
+    <!-- Errors -->
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_field_required">This field is required</string>
+
+    <!-- Buttons -->
+    <string name="action_sign_in">Sign in</string>
+    <string name="action_register">Register</string>
+
+    <!-- Menu items -->
+    <string name="menu_options">Options</string>
+    <string name="menu_options_short">opt</string>
+    <string name="menu_music">Music</string>
+    <string name="menu_music_short">ost</string>
+    <string name="menu_sounds">Sounds</string>
+    <string name="menu_sounds_short">snd</string>
+    <string name="menu_exit">Exit</string>
+    <string name="menu_exit_short">X</string>
+
+    <!-- Miscellaneous -->
+    <string name="hint">Hint</string>
+    <string name="answer">Check answer</string>
+    <string name="username_id">Username_ID</string>
+    <string name="close">Close</string>
+    <string name="scoreboard">Scoreboard</string>
+    <string name="title_activity_game">GameActivity</string>
+</resources>
