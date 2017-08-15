@@ -23,6 +23,8 @@
     <string name="menu_music_short">ost</string>
     <string name="menu_sounds">Sounds</string>
     <string name="menu_sounds_short">snd</string>
+    <string name="menu_back">Back</string>
+    <string name="menu_back_short">$lt;-</string>
     <string name="menu_exit">Exit</string>
     <string name="menu_exit_short">X</string>
 

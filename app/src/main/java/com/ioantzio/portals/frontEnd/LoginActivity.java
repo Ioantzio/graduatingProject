@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -44,7 +47,7 @@ public class LoginActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        if(Build.VERSION.SDK_INT > 9)
+        if (Build.VERSION.SDK_INT > 9)
         {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
@@ -100,12 +103,11 @@ public class LoginActivity extends AppCompatActivity
         mController = initializeController();
         validate = new ValidateString();
 
-        if(!validateString(username))
+        if (!validateString(username))
         {
             Toast.makeText(this, "Error! Username " + errorMessage, Toast.LENGTH_SHORT).show();
             return;
-        }
-        else if(!validateString(password))
+        } else if (!validateString(password))
         {
             Toast.makeText(this, "Error! Password " + errorMessage, Toast.LENGTH_SHORT).show();
             return;
@@ -113,17 +115,15 @@ public class LoginActivity extends AppCompatActivity
 
         userExists = userExists(username, password);
 
-        if(userExists)
+        if (userExists)
         {
             Toast.makeText(this, "Login successful", Toast.LENGTH_LONG).show();
             startActivity(new Intent(LoginActivity.this, GameActivity.class));
             finish();
-        }
-        else if(!userExists)
+        } else if (!userExists)
         {
             Toast.makeText(this, "Login failed", Toast.LENGTH_LONG).show();
-        }
-        else
+        } else
         {
             Toast.makeText(this, "Error", Toast.LENGTH_LONG).show();
         }
@@ -146,13 +146,25 @@ public class LoginActivity extends AppCompatActivity
         result = validate.validateString(string);
         errorMessage = validate.getErrorMessage(result);
 
-        if(result == 100)
+        if (result == 100)
         {
             return true;
-        }
-        else
+        } else
         {
             return false;
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_exit, menu);
+        return true;
+    }
+
+    public void exitOnClickEvent(MenuItem item)
+    {
+        finish();
     }
 }

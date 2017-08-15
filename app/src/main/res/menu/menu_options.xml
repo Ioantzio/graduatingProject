@@ -7,28 +7,39 @@
         android:menuCategory="container"
         android:onClick="optionsOnClickEvent"
         android:title="@string/menu_options"
-        android:titleCondensed="@string/menu_options_short"/>
+        android:titleCondensed="@string/menu_options_short"
+        app:showAsAction="never"/>
     <group android:id="@+id/sound">
-        <item
-            android:id="@+id/music"
-            android:checkable="true"
-            android:icon="@drawable/ic_music"
-            android:onClick="musicOnClickEvent"
-            android:title="@string/menu_music"
-            android:titleCondensed="@string/menu_music_short"/>
         <item
             android:id="@+id/sounds"
             android:checkable="true"
             android:icon="@drawable/ic_sounds"
             android:onClick="soundsOnClickEvent"
             android:title="@string/menu_sounds"
-            android:titleCondensed="@string/menu_sounds_short"/>
+            android:titleCondensed="@string/menu_sounds_short"
+            app:showAsAction="never"/>
+        <item
+            android:id="@+id/music"
+            android:checkable="true"
+            android:icon="@drawable/ic_music"
+            android:onClick="musicOnClickEvent"
+            android:title="@string/menu_music"
+            android:titleCondensed="@string/menu_music_short"
+            app:showAsAction="never"/>
     </group>
+    <item
+        android:id="@+id/back"
+        android:icon="@drawable/ic_back"
+        android:menuCategory="container"
+        android:onClick="backOnClickEvent"
+        android:title="@string/menu_back"
+        android:titleCondensed="@string/menu_back_short"
+        app:showAsAction="ifRoom"/>
     <item
         android:id="@+id/exit"
         android:icon="@drawable/ic_exit"
         android:onClick="exitOnClickEvent"
         android:title="@string/menu_exit"
         android:titleCondensed="@string/menu_exit_short"
-        app:showAsAction="ifRoom|withText"/>
+        app:showAsAction="ifRoom"/>
 </menu>

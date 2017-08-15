@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -41,11 +44,12 @@ public class RegisterActivity extends AppCompatActivity
     private boolean userRegistered = false;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        if(Build.VERSION.SDK_INT > 9)
+        if (Build.VERSION.SDK_INT > 9)
         {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
@@ -57,10 +61,13 @@ public class RegisterActivity extends AppCompatActivity
         mPasswordView = (EditText) findViewById(R.id.password);
 
         //Add password listener
-        mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener()
+        {
             @Override
-            public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
-                if (id == R.id.register || true) {
+            public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent)
+            {
+                if (id == R.id.register || true)
+                {
                     attemptRegister();
                     return true;
                 }
@@ -102,20 +109,17 @@ public class RegisterActivity extends AppCompatActivity
         mController = initializeController();
         validate = new ValidateString();
 
-        if(!validateString(username))
+        if (!validateString(username))
         {
             Toast.makeText(this, "Error! Username " + errorMessage, Toast.LENGTH_SHORT).show();
             return;
-        }
-        else if(!validateString(name))
+        } else if (!validateString(name))
         {
             Toast.makeText(this, "Error! Name " + errorMessage, Toast.LENGTH_SHORT).show();
-        }
-        else if(!validateString(surname))
+        } else if (!validateString(surname))
         {
             Toast.makeText(this, "Error! Surname " + errorMessage, Toast.LENGTH_SHORT).show();
-        }
-        else if(!validateString(password))
+        } else if (!validateString(password))
         {
             Toast.makeText(this, "Error! Password " + errorMessage, Toast.LENGTH_SHORT).show();
             return;
@@ -163,13 +167,25 @@ public class RegisterActivity extends AppCompatActivity
         result = validate.validateString(string);
         errorMessage = validate.getErrorMessage(result);
 
-        if(result == 100)
+        if (result == 100)
         {
             return true;
-        }
-        else
+        } else
         {
             return false;
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_exit, menu);
+        return true;
+    }
+
+    public void exitOnClickEvent(MenuItem item)
+    {
+        finish();
     }
 }
