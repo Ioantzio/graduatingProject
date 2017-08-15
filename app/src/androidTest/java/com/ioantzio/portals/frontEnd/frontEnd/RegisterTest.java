@@ -1,40 +1,50 @@
 package com.ioantzio.portals.frontEnd.frontEnd;
 
+import android.app.Instrumentation;
+import android.content.Context;
+import android.content.Intent;
+import android.support.test.InstrumentationRegistry;
 import android.support.test.uiautomator.By;
 import android.support.test.uiautomator.BySelector;
 import android.support.test.uiautomator.UiDevice;
 import android.support.test.uiautomator.UiObject2;
-import android.test.InstrumentationTestCase;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class RegisterTest extends InstrumentationTestCase
+import static junit.framework.Assert.fail;
+
+public class RegisterTest extends Exception
 {
     private UiDevice device;
+    private Context context;
+    private Intent intent;
+    private Instrumentation instrumentation;
 
     @Before
     public void setUp() throws Exception
     {
-        device = UiDevice.getInstance(getInstrumentation());
-        device.pressHome();
+        instrumentation = InstrumentationRegistry.getInstrumentation();
+        context = instrumentation.getContext();
+        device = UiDevice.getInstance(instrumentation);
 
-        UiObject2 appsButton = device.findObject(By.desc("Apps"));
-        appsButton.click();
+        intent = context.getPackageManager().getLaunchIntentForPackage("com.ioantzio.portals");
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
-        UiObject2 projectApp = device.findObject(By.desc("Portals"));
-        projectApp.click();
-
+        context.startActivity(intent);
     }
+
     @Test
     public void testRegister() throws Exception
     {
-        UiObject2 registerInButton = device.findObject(By.res("com.ioantzio.portals:id/register_button"));
-        registerInButton.click();
+        UiObject2 registerButton = waitForObject(By.res("com.ioantzio.portals:id/register_button"));
+        registerButton.click();
 
+        //TODO: StaleObjectException on Username
         //Username
         UiObject2 usernameRegister = waitForObject(By.res("com.ioantzio.portals:id/username"));
-        usernameRegister.setText("testRunner");
+        usernameRegister.setText("test");
         //Name
         UiObject2 nameRegister = waitForObject(By.res("com.ioantzio.portals:id/name"));
         nameRegister.setText("test");
@@ -45,8 +55,9 @@ public class RegisterTest extends InstrumentationTestCase
         UiObject2 passwordRegister = waitForObject(By.res("com.ioantzio.portals:id/password"));
         passwordRegister.setText("123456");
 
-        //TODO add register complete widnow and check if it will appear
-        //registerInButton.click();
+        registerButton = waitForObject(By.res("com.ioantzio.portals:id/register_button"));
+        registerButton.click();
+
         Thread.sleep(5000);
     }
 
@@ -63,6 +74,15 @@ public class RegisterTest extends InstrumentationTestCase
             }
         }
         return object;
+    }
+
+    @After
+    public void nullifyVariable()
+    {
+        device = null;
+        context = null;
+        intent = null;
+        instrumentation = null;
     }
 }
 

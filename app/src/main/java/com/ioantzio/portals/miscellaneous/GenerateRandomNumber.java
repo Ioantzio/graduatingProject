@@ -9,6 +9,7 @@ public class GenerateRandomNumber
 
     public int generateNumber(int lowLimit, int highLimit)
     {
+        rand = new Random();
         generatedNumber = rand.nextInt((highLimit-lowLimit)+1) + lowLimit;
 
         return generatedNumber;
