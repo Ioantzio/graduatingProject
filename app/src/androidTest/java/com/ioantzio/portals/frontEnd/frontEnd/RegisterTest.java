@@ -44,7 +44,7 @@ public class RegisterTest extends Exception
         //TODO: StaleObjectException on Username
         //Username
         UiObject2 usernameRegister = waitForObject(By.res("com.ioantzio.portals:id/username"));
-        usernameRegister.setText("testRunner");
+        usernameRegister.setText("test");
         //Name
         UiObject2 nameRegister = waitForObject(By.res("com.ioantzio.portals:id/name"));
         nameRegister.setText("test");

@@ -54,6 +54,11 @@ public class GameActivity extends AppCompatActivity
         Toast.makeText(getApplicationContext(), "Sound state changed!", Toast.LENGTH_SHORT).show();
     }
 
+    public void backOnClickEvent(MenuItem item)
+    {
+        Toast.makeText(getApplicationContext(), "Back!", Toast.LENGTH_SHORT).show();
+    }
+
     public void exitOnClickEvent(MenuItem item)
     {
         finish();
