@@ -24,7 +24,6 @@ public class GameActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
-//        getDisplayMetrics = new GetDisplayMetrics();
 //        showDisplayMetrics();
 
         ImageButton mPlayButton = (ImageButton) findViewById(R.id.playButton);
@@ -40,21 +39,24 @@ public class GameActivity extends AppCompatActivity
 
     private void showDisplayMetrics()
     {
+        getDisplayMetrics = new GetDisplayMetrics();
+
         int widthTilesCount = 8;
         int heightTilesCount = 12;
 
         Point[][] mTilePoints = getDisplayMetrics.getTilePoints(widthTilesCount, heightTilesCount);
 
-        /*String message;
+        String message;
 
         for(int i = 0; i < widthTilesCount; i++)
         {
             for(int j = 0; j < heightTilesCount; j++)
             {
-                message = "Tile " + i + ", " + j + " || Width=" + mTilePoints[i][j].getWidth() + " & Height=" +  mTilePoints[i][j].getHeight();
+            //TODO: resume tile development
+                message = "Tile " + i + ", " + j + " || Index: " + mTilePoints[i][j].getIndex() + " => Width=" + mTilePoints[i][j].getWidth() + " & Height=" +  mTilePoints[i][j].getHeight();
                 Log.d("DisplayMetrics", message);
             }
-        }*/
+        }
     }
 
     @Override
@@ -82,6 +84,7 @@ public class GameActivity extends AppCompatActivity
 
     public void backOnClickEvent(MenuItem item)
     {
+        showDisplayMetrics();
         Toast.makeText(getApplicationContext(), "Back!", Toast.LENGTH_SHORT).show();
     }
 

@@ -25,12 +25,14 @@ public class GetDisplayMetrics
         displayWidth/displayHeight: the width/height of the phone screen the application is currently running
         tileWidth/tileHeight: the calculated width/height of the tile that will be drawn
         offsetX/offsetY: the calculated space from the edge screen to the first tiles
+        tileCount: the index of the tiles
     */
 
     @SuppressWarnings("RedundantCast")
     public Point[][] getTilePoints(int widthTilesCount, int heightTilesCount)
     {
         int width, height;
+        int tileCount;
         Point[][] mTilePoints = new Point[widthTilesCount][heightTilesCount];
 
         int displayWidth = getDisplayWidth();
@@ -45,6 +47,8 @@ public class GetDisplayMetrics
         width = offsetX;
         height = offsetY;
 
+        tileCount = 1;
+
         for (int i = 0; i < widthTilesCount; i++)
         {
             for (int j = 0; j < heightTilesCount; j++)
@@ -56,6 +60,22 @@ public class GetDisplayMetrics
             }
             width = width + tileWidth + 1;
             height = offsetY;
+        }
+
+        for (int j = heightTilesCount; j > 0; j--)
+        {
+            for (int i = 0; i < widthTilesCount; i++)
+            {
+                if (j%2 == 0)
+                {
+                    mTilePoints[i][j-1].setIndex(tileCount);
+                }
+                else
+                {
+                    mTilePoints[widthTilesCount-i-1][j-1].setIndex(tileCount);
+                }
+                tileCount++;
+            }
         }
 
         return mTilePoints;
