@@ -2,6 +2,11 @@ package com.ioantzio.portals.miscellaneous;
 
 public class CompareStrings
 {
+    /**
+     * @param string1 String to be compared
+     * @param string2 String to be compared
+     * @return Returns true if the two parameters are equal. Otherwise returns false
+     */
     public boolean compareStrings(String string1, String string2)
     {
         if (string1.equals(string2))
@@ -13,6 +18,11 @@ public class CompareStrings
         }
     }
 
+    /**
+     * @param string1 String to be compared
+     * @param string2 String to be compared
+     * @return Returns true if the two parameters are equal(case-sensitive). Otherwise returns false
+     */
     public boolean strictCompareStrings(String string1, String string2)
     {
         string1 = modifyString(string1);

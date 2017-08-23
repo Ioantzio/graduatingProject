@@ -37,6 +37,9 @@ public class GameActivity extends AppCompatActivity
         });
     }
 
+    /**
+     * Prepares the game screen to be drawn.
+     */
     private void showDisplayMetrics()
     {
         getDisplayMetrics = new GetDisplayMetrics();

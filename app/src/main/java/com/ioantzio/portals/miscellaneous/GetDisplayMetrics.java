@@ -28,6 +28,11 @@ public class GetDisplayMetrics
         tileCount: the index of the tiles
     */
 
+    /**
+     * @param widthTilesCount Number of tiles to be drawn horizontally
+     * @param heightTilesCount Number of tiles to be drawn vertically
+     * @return Returns a 2D-map of the locations where the tiles will be drawn
+     */
     @SuppressWarnings("RedundantCast")
     public Point[][] getTilePoints(int widthTilesCount, int heightTilesCount)
     {

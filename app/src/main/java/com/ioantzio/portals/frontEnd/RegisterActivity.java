@@ -150,11 +150,23 @@ public class RegisterActivity extends AppCompatActivity
         return new MockDatabase();
     }
 
+    /**
+     * @param username Username
+     * @param pass Password
+     * @return Returns true if the user exists in the database. False otherwise.
+     */
     public boolean userExists(String username, String pass)
     {
         return mController.attemptUserVerification(username, pass);
     }
 
+    /**
+     * @param username Username
+     * @param name Name
+     * @param surname Surname
+     * @param password Password
+     * @return Returns true if the user is registered successfully. False otherwise.
+     */
     public boolean registerUser(String username, String name, String surname, String password)
     {
         return mController.attemptUserRegistration(username, name, surname, password);
