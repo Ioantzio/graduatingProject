@@ -2,6 +2,10 @@ package com.ioantzio.portals.miscellaneous;
 
 public class ValidateString
 {
+    /**
+     * @param s String to be validated
+     * @return Validates the input through certain conditions. Returns 100 if the input is valid.
+     */
     public int validateString(String s)
     {
         if (s.equals(null))
