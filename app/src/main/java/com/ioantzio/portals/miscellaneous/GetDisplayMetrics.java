@@ -6,47 +6,129 @@ import com.ioantzio.portals.models.Point;
 
 public class GetDisplayMetrics
 {
-    int getDisplayWidth()
-    {
-        return Resources.getSystem().getDisplayMetrics().widthPixels;
-    }
+    //widthTilesCount/heightTilesCount: the number of tiles to be drawn horizontally/vertically
+    private int widthTilesCount;
+    private int heightTilesCount;
 
-    int getDisplayHeight()
-    {
-        return Resources.getSystem().getDisplayMetrics().heightPixels;
-    }
+    //tileWidth/tileHeight: the calculated width/height of the tile that will be drawn
+    private int tileWidth;
+    private int tileHeight;
 
-    /*
-        mTilePoints: 2D array that contains the coordinates of the locations where the game tiles will be drawn
-        displayWidth/displayHeight: the width/height of the phone screen the application is currently running
-        tileWidth/tileHeight: the calculated width/height of the tile that will be drawn
-        offsetX/offsetY: the calculated space from the edge screen to the first tiles
-        tileCount: the index of the tiles
-    */
+    //offsetX/offsetY: the calculated space from the edge screen to the first tile(s)
+    private int offsetX;
+    private int offsetY;
+
 
     /**
      * @param widthTilesCount Number of tiles to be drawn horizontally
      * @param heightTilesCount Number of tiles to be drawn vertically
+     */
+    public GetDisplayMetrics(int widthTilesCount, int heightTilesCount)
+    {
+        this.widthTilesCount = widthTilesCount;
+        this.heightTilesCount = heightTilesCount;
+
+        this.tileWidth = 50;
+        this.tileHeight = 50;
+
+        this.offsetX = 2;
+        this.offsetY = 2;
+    }
+
+    public int getWidthTilesCount()
+    {
+        return widthTilesCount;
+    }
+
+    public void setWidthTilesCount(int widthTilesCount)
+    {
+        this.widthTilesCount = widthTilesCount;
+    }
+
+    public int getHeightTilesCount()
+    {
+        return heightTilesCount;
+    }
+
+    public void setHeightTilesCount(int heightTilesCount)
+    {
+        this.heightTilesCount = heightTilesCount;
+    }
+
+    public int getTileWidth()
+    {
+        return tileWidth;
+    }
+
+    public void setTileWidth(int tileWidth)
+    {
+        this.tileWidth = tileWidth;
+    }
+
+    public int getTileHeight()
+    {
+        return tileHeight;
+    }
+
+    public void setTileHeight(int tileHeight)
+    {
+        this.tileHeight = tileHeight;
+    }
+
+    public int getOffsetX()
+    {
+        return offsetX;
+    }
+
+    public void setOffsetX(int offsetX)
+    {
+        this.offsetX = offsetX;
+    }
+
+    public int getOffsetY()
+    {
+        return offsetY;
+    }
+
+    public void setOffsetY(int offsetY)
+    {
+        this.offsetY = offsetY;
+    }
+
+    public int getDisplayWidth()
+    {
+        return Resources.getSystem().getDisplayMetrics().widthPixels;
+    }
+
+    public int getDisplayHeight()
+    {
+        return Resources.getSystem().getDisplayMetrics().heightPixels;
+    }
+
+    /**
      * @return Returns a 2D-map of the locations where the tiles will be drawn
      */
     @SuppressWarnings("RedundantCast")
-    public Point[][] getTilePoints(int widthTilesCount, int heightTilesCount)
+    public Point[][] getTilePoints()
     {
-        int width, height;
-        int tileCount;
         Point[][] mTilePoints = new Point[widthTilesCount][heightTilesCount];
 
-        int displayWidth = getDisplayWidth();
-        int displayHeight = getDisplayHeight();
+        int width, height;
+        int tileCount;
+        int displayWidth;
+        int displayHeight;
 
-        int tileWidth = (int) ((displayWidth - widthTilesCount + 1) / widthTilesCount);
-        int tileHeight = (int) ((displayHeight - heightTilesCount + 1) / heightTilesCount);
+        displayWidth = getDisplayWidth();
+        displayHeight = getDisplayHeight();
 
-        int offsetX = (displayWidth - (tileWidth * widthTilesCount)) / 2;
-        int offsetY = (displayHeight - (tileHeight * heightTilesCount)) / 2;
+        setTileWidth((int) ((displayWidth - widthTilesCount + 1) / widthTilesCount));
+        setTileHeight((int) ((displayHeight - heightTilesCount + 1) / heightTilesCount));
 
-        width = offsetX;
-        height = offsetY;
+        setOffsetX((displayWidth - (tileWidth * widthTilesCount)) / 2);
+        setOffsetY((displayHeight - (tileHeight * heightTilesCount)) / 2);
+
+        width = getOffsetX();
+        height = getOffsetY();
 
         tileCount = 1;
 
@@ -60,7 +142,7 @@ public class GetDisplayMetrics
                 height = height + tileHeight + 1;
             }
             width = width + tileWidth + 1;
-            height = offsetY;
+            height = getOffsetY();
         }
 
         for (int j = heightTilesCount; j > 0; j--)
