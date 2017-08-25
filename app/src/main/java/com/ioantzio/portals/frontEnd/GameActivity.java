@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import com.ioantzio.portals.R;
 import com.ioantzio.portals.miscellaneous.GetDisplayMetrics;
-import com.ioantzio.portals.miscellaneous.Point;
+import com.ioantzio.portals.models.Point;
 
 public class GameActivity extends AppCompatActivity
 {

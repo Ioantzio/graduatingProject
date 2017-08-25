@@ -1,21 +1,17 @@
 package com.ioantzio.portals.miscellaneous;
 
 import android.content.res.Resources;
-import android.util.DisplayMetrics;
+
+import com.ioantzio.portals.models.Point;
 
 public class GetDisplayMetrics
 {
-    public DisplayMetrics getDisplayMetrics()
-    {
-        return Resources.getSystem().getDisplayMetrics();
-    }
-
-    private int getDisplayWidth()
+    int getDisplayWidth()
     {
         return Resources.getSystem().getDisplayMetrics().widthPixels;
     }
 
-    private int getDisplayHeight()
+    int getDisplayHeight()
     {
         return Resources.getSystem().getDisplayMetrics().heightPixels;
     }

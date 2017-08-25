@@ -1,4 +1,4 @@
-package com.ioantzio.portals.miscellaneous;
+package com.ioantzio.portals.models;
 
 public class Point
 {
@@ -8,12 +8,14 @@ public class Point
 
     public Point()
     {
+        this.index = 1;
         this.width = 0;
         this.height = 0;
     }
 
     public Point(int width, int height)
     {
+        this.index = 1;
         this.width = width;
         this.height = height;
     }

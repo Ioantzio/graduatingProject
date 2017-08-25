@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
  */
 public class UserTest
 {
-    User user;
+    private User user;
 
     private String username;
     private String name;
@@ -29,18 +29,18 @@ public class UserTest
     @Before
     public void initializeVariables()
     {
-        username = "JohnyWalker94";
-        name = "Johny";
-        surname = "Walker";
+        username = "username";
+        name = "user";
+        surname = "name";
         password = "12345";
         score = 9001L;
 
         user = new User(username, name, surname, password, score);
 
         newId = 2L;
-        newUsername = "dimitriadis1";
-        newName = "dimitris";
-        newSurname = "dimitriadis";
+        newUsername = "nickname";
+        newName = "nick";
+        newSurname = "name2";
         newPassword = "abcde";
         newScore = 10L;
     }
